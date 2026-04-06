@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harbor Light Academy Admissions</title>
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --navy-2: #15386b;
+      --gold: #c9a227;
+      --cream: #f8f6ef;
+      --white: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --line: #dbe2ea;
+      --panel: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy), var(--navy-2) 65%, var(--gold));
+      color: var(--white);
+      padding: 56px 20px 40px;
+    }
+
+    .wrap {
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 46px;
+      line-height: 1.05;
+    }
+
+    .hero-text {
+      max-width: 780px;
+      margin-top: 16px;
+      font-size: 18px;
+      color: #eef4ff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-pill {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 18px;
+      padding: 14px;
+      font-size: 14px;
+    }
+
+    main {
+      padding: 28px 20px 50px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.6fr .8fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .card h2 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      color: var(--navy);
+    }
+
+    .card p.section-desc {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid #cfd8e3;
+      font-size: 14px;
+      background: var(--white);
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    .info-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    .policy {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: var(--panel);
+      margin-bottom: 12px;
+    }
+
+    .policy input[type="checkbox"] {
+      width: auto;
+      margin-top: 4px;
+      transform: scale(1.15);
+      accent-color: var(--gold);
+    }
+
+    .policy-title {
+      font-weight: bold;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    button {
+      border: none;
+      border-radius: 16px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .secondary {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--line);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 20px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .summary-row:last-child { border-bottom: none; }
+    .summary-row span:first-child { color: var(--muted); }
+    .summary-row span:last-child { text-align: right; font-weight: bold; }
+
+    .progress {
+      height: 12px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 8px 0 16px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: var(--gold);
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .note-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .layout, .hero-grid, .grid {
+        grid-template-columns: 1fr;
+      }
+      h1 { font-size: 36px; }
+      .sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">Admissions Portal</div>
+      <h1>Harbor Light Academy</h1>
+      <div class="hero-text">
+        Application and enrollment site adapted from your baseline contract. Every reference to Trinity Lutheran School has been replaced with Harbor Light Academy, and the grade level and tuition fields are intentionally left blank for administrative completion.
+      </div>
+      <div class="hero-grid">
+        <div class="hero-pill">Student Application</div>
+        <div class="hero-pill">Transportation Options</div>
+        <div class="hero-pill">Payment Planning</div>
+        <div class="hero-pill">Policies & Signatures</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap layout">
+      <div>
+        <section class="card">
+          <h2>Student Information</h2>
+          <p class="section-desc">Core student details for the Harbor Light Academy admissions process.</p>
+          <div class="grid">
+            <div>
+              <label for="schoolYear">School Year</label>
+              <input id="schoolYear" value="2026-2027" />
+            </div>
+            <div>
+              <label for="grade">Grade Level Applying For</label>
+              <input id="grade" placeholder="Leave blank or complete later" />
+            </div>
+            <div>
+              <label for="firstName">Student First Name</label>
+              <input id="firstName" />
+            </div>
+            <div>
+              <label for="lastName">Student Last Name</label>
+              <input id="lastName" />
+            </div>
+            <div>
+              <label for="preferredName">Preferred Name</label>
+              <input id="preferredName" />
+            </div>
+            <div>
+              <label for="dob">Date of Birth</label>
+              <input id="dob" type="date" />
+            </div>
+            <div>
+              <label for="gender">Gender</label>
+              <input id="gender" />
+            </div>
+            <div>
+              <label for="currentSchool">Current School</label>
+              <input id="currentSchool" />
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Household Information</h2>
+          <p class="section-desc">Primary parent or guardian contact details and home address.</p>
+          <div class="grid">
+            <div>
+              <label for="parent1Name">Parent/Guardian 1 Name</label>
+              <input id="parent1Name" />
+            </div>
+            <div>
+              <label for="parent1Email">Parent/Guardian 1 Email</label>
+              <input id="parent1Email" type="email" />
+            </div>
+            <div>
+              <label for="parent1Phone">Parent/Guardian 1 Phone</label>
+              <input id="parent1Phone" />
+            </div>
+            <div>
+              <label for="parent2Name">Parent/Guardian 2 Name</label>
+              <input id="parent2Name" />
+            </div>
+            <div>
+              <label for="parent2Email">Parent/Guardian 2 Email</label>
+              <input id="parent2Email" type="email" />
+            </div>
+            <div>
+              <label for="parent2Phone">Parent/Guardian 2 Phone</label>
+              <input id="parent2Phone" />
+            </div>
+            <div class="full">
+              <label for="address">Street Address</label>
+              <input id="address" />
+            </div>
+            <div>
+              <label for="city">City</label>
+              <input id="city" />
+            </div>
+            <div>
+              <label for="state">State</label>
+              <input id="state" />
+            </div>
+            <div>
+              <label for="zip">ZIP Code</label>
+              <input id="zip" />
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Transportation and Half-Day Options</h2>
+          <p class="section-desc">Baseline transportation language is preserved, but customized for Harbor Light Academy.</p>
+          <div class="grid">
+            <div>
+              <label for="halfDay">Half-Day Option</label>
+              <select id="halfDay">
+                <option>Full Day</option>
+                <option>Half Day</option>
+              </select>
+            </div>
+            <div>
+              <label for="transportation">Transportation Selection</label>
+              <select id="transportation">
+                <option>No Transportation Needed</option>
+                <option>Transportation, Additional Child</option>
+                <option>Transportation, One-way</option>
+                <option>Transportation, Two-way</option>
+              </select>
+            </div>
+          </div>
+          <div class="info-box">
+            Harbor Light Academy offers optional transportation services. Transportation pricing and routing can be customized later by the school office.
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Tuition Payment Plan</h2>
+          <p class="section-desc">Tuition field is intentionally blank while payment-plan structure remains available.</p>
+          <div class="grid">
+            <div>
+              <label for="tuition">Tuition Amount</label>
+              <input id="tuition" placeholder="Leave blank for administrative completion" />
+            </div>
+            <div>
+              <label for="paymentPlan">Payment Plan Selection</label>
+              <select id="paymentPlan">
+                <option value="">Select a payment option</option>
+                <option>One Payment</option>
+                <option>Two Payments</option>
+                <option>Ten Monthly Installments</option>
+                <option>Twelve Monthly Installments</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid" style="margin-top:16px;">
+            <div class="info-box">Family Discount — younger sibling(s) may receive a 5% tuition discount.</div>
+            <div class="info-box">Military Discount — active duty military families may receive a 5% tuition discount.</div>
+            <div class="info-box">Discounts are calculated and applied by the business office.</div>
+            <div class="info-box">The amount due may include tuition plus selected transportation options.</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Social Services and Emergency Information</h2>
+          <p class="section-desc">Additional required information for health, safety, and emergency communication.</p>
+          <div class="grid">
+            <div>
+              <label for="emergency1">Emergency Contact 1</label>
+              <input id="emergency1" />
+            </div>
+            <div>
+              <label for="emergency1Phone">Emergency Contact 1 Phone</label>
+              <input id="emergency1Phone" />
+            </div>
+            <div>
+              <label for="emergency2">Emergency Contact 2</label>
+              <input id="emergency2" />
+            </div>
+            <div>
+              <label for="emergency2Phone">Emergency Contact 2 Phone</label>
+              <input id="emergency2Phone" />
+            </div>
+            <div>
+              <label for="physician">Physician / Medical Provider</label>
+              <input id="physician" />
+            </div>
+            <div>
+              <label for="physicianPhone">Physician Phone</label>
+              <input id="physicianPhone" />
+            </div>
+            <div class="full">
+              <label for="medicalNotes">Medical Notes</label>
+              <textarea id="medicalNotes" placeholder="Allergies, medications, or additional notes"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Policies and Agreement</h2>
+          <p class="section-desc">Adapted from the original contract language with Harbor Light Academy substituted throughout.</p>
+
+          <div class="policy">
+            <input type="checkbox" id="policy1" />
+            <div>
+              <div class="policy-title">Off-Campus Activities Permission and Release</div>
+              <div class="small">I understand that from time to time my child may participate in school-sponsored or school-endorsed activities away from Harbor Light Academy and that such activities will be supervised by school personnel.</div>
+            </div>
+          </div>
+
+          <div class="policy">
+            <input type="checkbox" id="policy2" />
+            <div>
+              <div class="policy-title">Photography and Videos</div>
+              <div class="small">I give permission for photographs, videos, interviews, artwork, and creative pieces of or produced by my child to be used in school publications and promotional materials unless written notice is provided to the contrary.</div>
+            </div>
+          </div>
+
+          <div class="policy">
+            <input type="checkbox" id="policy3" />
+            <div>
+              <div class="policy-title">Rules, Policies, and Standards</div>
+              <div class="small">I understand that by enrolling in Harbor Light Academy, our family will be expected to follow all school rules, policies, and standards, and that disciplinary decisions remain at the discretion of school leadership.</div>
+            </div>
+          </div>
+
+          <div class="policy">
+            <input type="checkbox" id="policy4" />
+            <div>
+              <div class="policy-title">Financial Responsibility</div>
+              <div class="small">I understand that enrollment creates a tuition and fee obligation according to the school’s payment schedule and cancellation policy, and that administrative systems may be required to complete enrollment.</div>
+            </div>
+          </div>
+
+          <div class="policy">
+            <input type="checkbox" id="policy5" />
+            <div>
+              <div class="policy-title">Emergency Notifications</div>
+              <div class="small">I authorize Harbor Light Academy to notify the parent or guardian in the event of illness or emergency and to obtain immediate medical care if necessary and if I cannot be reached.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Signature Section</h2>
+          <p class="section-desc">Digital signature placeholders for parent or guardian acknowledgement.</p>
+          <div class="grid">
+            <div>
+              <label for="signature1">Parent/Guardian Signature 1</label>
+              <input id="signature1" />
+            </div>
+            <div>
+              <label for="signature2">Parent/Guardian Signature 2</label>
+              <input id="signature2" />
+            </div>
+            <div>
+              <label for="signatureDate">Signature Date</label>
+              <input id="signatureDate" type="date" />
+            </div>
+            <div class="full">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes"></textarea>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="primary" type="button">Submit Application</button>
+            <button class="secondary" type="button">Save Draft</button>
+          </div>
+          <div class="footer-note">This single-file version is designed for easy GitHub Pages publishing.</div>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <section class="card">
+          <h2>Application Snapshot</h2>
+          <p class="section-desc">Live summary of the Harbor Light Academy form.</p>
+          <div class="small">Completion</div>
+          <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+          <div class="summary-row"><span>Student</span><span id="sumStudent">—</span></div>
+          <div class="summary-row"><span>School Year</span><span id="sumYear">2026-2027</span></div>
+          <div class="summary-row"><span>Grade Level</span><span id="sumGrade">Blank by design</span></div>
+          <div class="summary-row"><span>Parent/Guardian</span><span id="sumParent">—</span></div>
+          <div class="summary-row"><span>Transportation</span><span id="sumTransportation">No Transportation Needed</span></div>
+          <div class="summary-row"><span>Half-Day Option</span><span id="sumHalfDay">Full Day</span></div>
+          <div class="summary-row"><span>Payment Plan</span><span id="sumPayment">Not selected</span></div>
+          <div class="summary-row"><span>Tuition</span><span id="sumTuition">Blank by design</span></div>
+
+          <h3 style="margin-top:22px; color: var(--navy);">Included contract adaptations</h3>
+          <ul class="note-list">
+            <li>Every visible mention of Trinity Lutheran School has been updated to Harbor Light Academy.</li>
+            <li>Grade level remains editable and may be left blank until placement is finalized.</li>
+            <li>Tuition remains editable and may be left blank for business-office completion.</li>
+            <li>Transportation, payment plans, policy agreements, and signature flow are preserved in website form.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const ids = [
+      'schoolYear','grade','firstName','lastName','parent1Name','transportation','halfDay','paymentPlan','tuition'
+    ];
+
+    function value(id) {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    }
+
+    function updateSummary() {
+      document.getElementById('sumStudent').textContent = `${value('firstName')} ${value('lastName')}`.trim() || '—';
+      document.getElementById('sumYear').textContent = value('schoolYear') || '—';
+      document.getElementById('sumGrade').textContent = value('grade') || 'Blank by design';
+      document.getElementById('sumParent').textContent = value('parent1Name') || '—';
+      document.getElementById('sumTransportation').textContent = value('transportation') || 'No Transportation Needed';
+      document.getElementById('sumHalfDay').textContent = value('halfDay') || 'Full Day';
+      document.getElementById('sumPayment').textContent = value('paymentPlan') || 'Not selected';
+      document.getElementById('sumTuition').textContent = value('tuition') || 'Blank by design';
+
+      const important = ['firstName','lastName','parent1Name','parent1Email','parent1Phone','address','city','state','zip','signature1','signatureDate'];
+      const completed = important.filter(id => document.getElementById(id) && document.getElementById(id).value.trim() !== '').length;
+      const percent = Math.round((completed / important.length) * 100);
+      document.getElementById('progressBar').style.width = percent + '%';
+    }
+
+    document.querySelectorAll('input, select, textarea').forEach(el => {
+      el.addEventListener('input', updateSummary);
+      el.addEventListener('change', updateSummary);
+    });
+
+    updateSummary();
+  </script>
+</body>
+</html>
